@@ -15,7 +15,7 @@
  */
 
 function coinFlip() {
-
+  return (Math.random() > 0.5 ? "heads" : "tails");
 }
 
 /** Multiple coin flips
@@ -38,7 +38,17 @@ function coinFlip() {
  */
 
 function coinFlips(flips) {
+  let arr_coins = [];
 
+  if (!flips) {
+    arr_coins.push(coinFlip());
+  } else {
+    for (var i = 0; i < flips; i++) {
+      Math.random() > 0.5 ? arr_coins.push("heads") : arr_coins.push("tails");
+    }
+  }
+
+  return arr_coins;
 }
 
 /** Count multiple flips
@@ -55,7 +65,17 @@ function coinFlips(flips) {
  */
 
 function countFlips(array) {
+  var heads = 0;
+  var tails = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] == "heads") {
+      heads++;
+    } else {
+      tails++;
+    }
+  }
 
+  return { "heads": heads, "tails": tails }
 }
 
 /** Flip a coin!
@@ -70,7 +90,18 @@ function countFlips(array) {
  */
 
 function flipACoin(call) {
+  var verdict = 'win';
+  var flip = coinFlip();
 
+  if (call) {
+    if (!(call == flip)) {
+      verdict = 'lose';
+    }
+
+    return { "call": call, "flip": flip, "result": verdict };
+  } else {
+    console.log('Error: no input.\nUsage: node guess-flips --call=[heads|tails]')
+  }
 }
 
 
@@ -78,3 +109,5 @@ function flipACoin(call) {
  * 
  * Export all of your named functions
 */
+
+export { coinFlip, coinFlips, countFlips, flipACoin }
