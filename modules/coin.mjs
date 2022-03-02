@@ -75,7 +75,13 @@ function countFlips(array) {
     }
   }
 
-  return { "heads": heads, "tails": tails }
+  if (heads > 0 && tails == 0) {
+    return `{ heads: ${heads}}`
+  } else if (tails > 0 && heads == 0) {
+    return `{ tails: ${tails}}`
+  } else {
+    return `{ heads: ${heads}, "tails": ${tails} }`
+  }
 }
 
 /** Flip a coin!
@@ -93,15 +99,11 @@ function flipACoin(call) {
   var verdict = 'win';
   var flip = coinFlip();
 
-  if (call) {
-    if (!(call == flip)) {
-      verdict = 'lose';
-    }
-
-    return { "call": call, "flip": flip, "result": verdict };
-  } else {
-    console.log('Error: no input.\nUsage: node guess-flips --call=[heads|tails]')
+  if (!(call == flip)) {
+    verdict = 'lose';
   }
+
+  return `{ call: ${call}, flip: ${flip}, result: ${verdict} }`;
 }
 
 

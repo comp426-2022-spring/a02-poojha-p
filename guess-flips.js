@@ -4,4 +4,10 @@ import minimist from "minimist";
 
 // Call the coinFlips function and put the return into STDOUT
 const myArgs = minimist(process.argv.slice(2));
-console.log(flipACoin(myArgs['call']));
+const call = myArgs['call']
+
+if(call == "heads" || call == "tails") {
+    console.log(flipACoin(call))
+} else {
+    console.log("Error: no input\nUsage: node guess-flip --call=[heads|tails]")
+}
