@@ -1,13 +1,13 @@
 {
   "name": "coinflip",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This is a simple package that emulates coin flips in several different ways.",
   "main": "flip.js",
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "flip": "node flip.js",
     "flips": "node flips.js",
-    "guess-flip": "node guess-flip.js"
+    "guess": "node guess-flip.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/comp426-2022-spring/a02-poojha-p#readme",
   "devDependencies": {
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.5",
+    "yargs": "^17.3.1"
   }
 }
